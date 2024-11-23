@@ -1,3 +1,4 @@
- pip install streamlit
- pip install transformers
- pip install sentencepiece.
+streamlit==1.40.1
+transformers==4.46.3
+sentencepiece==0.2.0
+torch==2.1.0
