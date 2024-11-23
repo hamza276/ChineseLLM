@@ -2,3 +2,4 @@ streamlit==1.40.1
 transformers==4.46.3
 sentencepiece
 torch  
+accelerate
