@@ -1,20 +1,23 @@
 import streamlit as st
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-# Streamlit app setup
 st.title("AI Code Generator")
 st.write("Enter a prompt to generate code using the model.")
 
 prompt = st.text_area("Prompt", "Write a quick sort algorithm.")
 
-device = "cuda"  # You can switch to 'cpu' if CUDA is not available
+device = "cuda"
 model_path = "01-ai/Yi-Coder-9B-Chat"
 
 def load_model():
     try:
+        # Ensure the user knows to install sentencepiece if required
         tokenizer = AutoTokenizer.from_pretrained(model_path)
         model = AutoModelForCausalLM.from_pretrained(model_path, device_map="auto").eval()
         return tokenizer, model
+    except ImportError as e:
+        st.error(f"Missing dependency: {e}. Please install it using `pip install sentencepiece`.")
+        st.stop()
     except Exception as e:
         st.error(f"Error loading model: {e}")
         st.stop()
