@@ -1,4 +1,4 @@
 streamlit==1.40.1
 transformers==4.46.3
-sentencepiece==0.2.0
-torch==2.1.0
+sentencepiece
+torch  
